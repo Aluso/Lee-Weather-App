@@ -13,7 +13,9 @@
     <title>Weather App</title>
   </head>
   <div class="container">
+    <div class="weather-app-wrapper">
     <div class="Weather-app">
+      <div class="overview">
   <h1>
     Nairobi
   </h1>
@@ -25,10 +27,14 @@
       Clear
     </li>
   </ul>
+  </div>
   <div class="row">
     <div class="col-6">
-      <img src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt="Clear">
-      20 °C| °F
+      <div class="d-flex weather-temperature">
+      <img src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt="Clear" id="icon"><div>
+     <strong id="temperature">20</strong><span class="units">°C | <a href="#">°F</a></span>
+     </div>
+   </div>
     </div>
     <div class="col-6">
       <ul>
@@ -44,7 +50,8 @@
       </ul>
     </div>
   </div>
-  <small>
+    </div>
+    <small>
     <a target="_blank" href="https://github.com/Aluso/New-Weather-app">Open-Source Code</a> by Lencer Aluso
     </small>
     </div>
