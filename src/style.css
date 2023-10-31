@@ -43,6 +43,7 @@ li {
   padding-right: 0px;
   padding-top: 0px;
   text-align: left;
+  text-transform: capitalize;
 }
 .weather-app-wrapper {
   max-width: 600px;

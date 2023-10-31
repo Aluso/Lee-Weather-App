@@ -9,6 +9,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
@@ -16,36 +17,29 @@
     <div class="weather-app-wrapper">
     <div class="Weather-app">
       <div class="overview">
-  <h1>
-    Nairobi
-  </h1>
+  <h1 id="city"></h1>
   <ul>
     <li>
       Sunday 23:17
     </li>
-    <li>
-      Clear
-    </li>
+    <li id="description"></li>
   </ul>
   </div>
   <div class="row">
     <div class="col-6">
       <div class="d-flex weather-temperature">
       <img src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt="Clear" id="icon"><div>
-     <strong id="temperature">20</strong><span class="units">°C | <a href="#">°F</a></span>
+     <strong id="temperature"></strong><span class="units">°C | <a href="#">°F</a></span>
      </div>
    </div>
     </div>
     <div class="col-6">
       <ul>
         <li>
-          Precipitation:51%
+          Humidity: <span id="humidity"></span>%
         </li>
         <li>
-          Humidity:66%
-        </li>
-        <li>
-          Wind:16km/h
+          Wind: <span id="wind"></span>km/h
         </li>
       </ul>
     </div>
