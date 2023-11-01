@@ -1,13 +1,9 @@
-function handleSearchSubmit(event) {
-  event.preventDefault();
-  let searchInputElement = document.querySelector("#search-form-input");
-  console.log(searchInputElement.value);
-  let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = searchInputElement.value;
+function searchCity(city) {
+  let apiKey = "324bf5756d5c6887ac717d9d18ca8c52";
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displaytemperature);
 }
-
-let searchFormElement = document.querySelector("#search-form");
-searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 function displaytemperature(response) {
   console.log(response.data.main.temp);
@@ -24,7 +20,15 @@ function displaytemperature(response) {
   console.log(response);
 }
 
-let apiKey = "324bf5756d5c6887ac717d9d18ca8c52";
-apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Nairobi&appid=${apiKey}&units=metric`;
+function handleSearchSubmit(event) {
+  event.preventDefault();
+  let searchInputElement = document.querySelector("#search-form-input");
+  console.log(searchInputElement.value);
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = searchInputElement.value;
+  searchCity(searchInputElement.value);
+}
 
-axios.get(apiUrl).then(displaytemperature);
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handleSearchSubmit);
+searchCity("Oyugis");
