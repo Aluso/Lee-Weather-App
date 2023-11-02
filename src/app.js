@@ -37,10 +37,10 @@ function formartDate(date) {
   ];
   let day = days[date.getDay()];
   if (minutes < 10) {
-    `0${minutes}`;
-    if (hours < 10) {
-      `0${hours}`;
-    }
+    minutes = `0${minutes}`;
+  }
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
 
   return `${day} ${hours}:${minutes}`;
