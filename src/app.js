@@ -1,12 +1,10 @@
 function searchCity(city) {
   let apiKey = "324bf5756d5c6887ac717d9d18ca8c52";
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displaytemperature);
 }
 
 function displaytemperature(response) {
-  console.log(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   let cityElement = document.querySelector("#city");
@@ -17,13 +15,40 @@ function displaytemperature(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  console.log(response);
+
+  let timeElement = document.querySelector("#time");
+  let date = new Date(response.data.dt * 1000);
+  timeElement.innerHTML = formartDate(date);
+
+  console.log(response.data);
+}
+
+function formartDate(date) {
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  if (minutes < 10) {
+    `0${minutes}`;
+    if (hours < 10) {
+      `0${hours}`;
+    }
+  }
+
+  return `${day} ${hours}:${minutes}`;
 }
 
 function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInputElement = document.querySelector("#search-form-input");
-  console.log(searchInputElement.value);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = searchInputElement.value;
   searchCity(searchInputElement.value);
