@@ -21,6 +21,11 @@ function displaytemperature(response) {
   timeElement.innerHTML = formartDate(date);
 
   console.log(response.data);
+  console.log(response.data.weather[0].icon);
+  document.querySelector("#icon").src =
+    "https://openweathermap.org/img/wn/" +
+    response.data.weather[0].icon +
+    ".png";
 }
 
 function formartDate(date) {

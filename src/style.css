@@ -1,6 +1,9 @@
 body {
   font-family: arial, sans-serif;
   background-color: #f9f7fe;
+  background: #222;
+  font-family: "Open Sans", sans-serif;
+  font-family: "PT Mono", monospace;
 }
 
 h1 {
@@ -49,6 +52,10 @@ li {
 .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
+  background: #eaeaea;
+  padding: 20px;
+  border-radius: 30px;
+  width: 100%;
 }
 .Weather-app {
   padding: 20px;
