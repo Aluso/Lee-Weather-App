@@ -19,6 +19,7 @@ function displaytemperature(response) {
   let timeElement = document.querySelector("#time");
   let date = new Date(response.data.dt * 1000);
   timeElement.innerHTML = formartDate(date);
+  celsiusTemperature = response.data.main.temp;
 
   console.log(response.data);
   console.log(response.data.weather[0].icon);
@@ -27,6 +28,26 @@ function displaytemperature(response) {
     response.data.weather[0].icon +
     ".png";
 }
+
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  console.log(fahrenheitTemperature);
+  return fahrenheitTemperature;
+}
+let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
+fahrenheitLinkElement.addEventListener("click", showFahrenheitTemperature);
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  return celsiusTemperature;
+}
+let celsiusLinkElement = document.querySelector("#celsius-link");
+celsiusLinkElement.addEventListener("click", showCelsiusTemperature);
 
 function formartDate(date) {
   let hours = date.getHours();
