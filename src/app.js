@@ -21,8 +21,6 @@ function displaytemperature(response) {
   timeElement.innerHTML = formartDate(date);
   celsiusTemperature = response.data.main.temp;
 
-  console.log(response.data);
-  console.log(response.data.weather[0].icon);
   document.querySelector("#icon").src =
     "https://openweathermap.org/img/wn/" +
     response.data.weather[0].icon +
@@ -34,7 +32,6 @@ function showFahrenheitTemperature(event) {
   let temperatureElement = document.querySelector("#temperature");
   fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-  console.log(fahrenheitTemperature);
   return fahrenheitTemperature;
 }
 let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
