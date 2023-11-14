@@ -76,7 +76,28 @@ function handleSearchSubmit(event) {
   cityElement.innerHTML = searchInputElement.value;
   searchCity(searchInputElement.value);
 }
+function displayForecast() {
+  let days = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thur"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="weather-forecast-day">
+              <div class="weather-forecast-date">${day}</div>
+               <div class="weather-forecast-icon">🌤</div>
+                <div class="weather-forecast-temperatures">
+                  <div class="weather-forecast-temperature"><strong>18</strong>°</div>
+                  <div class="weather-forecast-temperature">12°</div>
+              </div>
+              </div>`;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 searchCity("Oyugis");
+displayForecast();

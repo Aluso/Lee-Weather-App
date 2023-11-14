@@ -80,7 +80,6 @@ li {
   background: #eaeaea;
   padding: 20px;
   border-radius: 30px;
-  width: 100%;
 }
 .Weather-app {
   padding: 20px;
@@ -126,6 +125,8 @@ li {
 .weather-forecast {
   margin-top: 20px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 .weather-forecast-date {
   font-size: 16px;
@@ -134,4 +135,9 @@ li {
 
 .weather-forecast-temperature-min {
   opacity: 0.6;
+}
+.weather-forecast-temperatures {
+  display: flex;
+  margin-bottom: 20px;
+  color: #f65282;
 }
