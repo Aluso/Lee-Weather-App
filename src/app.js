@@ -1,9 +1,3 @@
-function searchCity(city) {
-  let apiKey = "324bf5756d5c6887ac717d9d18ca8c52";
-  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displaytemperature);
-}
-
 function displaytemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -13,7 +7,7 @@ function displaytemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
-  windElement = document.querySelector("#wind");
+  let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
 
   let timeElement = document.querySelector("#time");
@@ -25,6 +19,14 @@ function displaytemperature(response) {
     "https://openweathermap.org/img/wn/" +
     response.data.weather[0].icon +
     ".png";
+
+  getForecast(response.data.name);
+}
+
+function searchCity(city) {
+  let apiKey = "324bf5756d5c6887ac717d9d18ca8c52";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displaytemperature);
 }
 
 function showFahrenheitTemperature(event) {
@@ -76,8 +78,18 @@ function handleSearchSubmit(event) {
   cityElement.innerHTML = searchInputElement.value;
   searchCity(searchInputElement.value);
 }
-function displayForecast() {
-  let days = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thur"];
+function getForecast(city) {
+  let apiKey = "324bf5756d5c6887ac717d9d18ca8c52";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&cnt=7`;
+  axios(apiUrl).then(displayForecast);
+
+  console.log(apiUrl);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+
+  let days = ["Wed", "Thur", "Fri", "Sat", "Sun", "Mon", "Tue"];
   let forecastHtml = "";
 
   days.forEach(function (day) {
@@ -100,4 +112,3 @@ function displayForecast() {
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 searchCity("Oyugis");
-displayForecast();

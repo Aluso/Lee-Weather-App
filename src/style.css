@@ -53,7 +53,6 @@ li {
 }
 .units {
   text-decoration: none;
-  text-decoration: none;
   position: relative;
   font-size: 16px;
   top: -32px;
@@ -113,6 +112,7 @@ li {
   width: 80%;
   margin-bottom: 10px;
   padding: 5px 2px;
+  border: none;
 }
 .search-form-button {
   background-color: #885df1;
